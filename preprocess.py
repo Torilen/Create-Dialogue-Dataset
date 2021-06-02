@@ -48,9 +48,9 @@ if __name__ == "__main__":
 
     while not reach_end and i < args.maxCommentProcessed:
         stats.total += 1
-        comment = subprocess.check_output('head -{} {}'.format(i, args.decompressedSourceFilePath), shell=True)
+        comment = subprocess.check_output('head -{} {}'.format(i, args.decompressedSourceFilePath), shell=True).decode("utf-8")
 
-        if comment == "end":
+        if comment == "end\n":
             reach_end = True
         else:
             print(comment)

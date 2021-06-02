@@ -5,6 +5,7 @@ import pandas as pd
 from langdetect import detect_langs
 import os
 import argparse
+import subprocess
 
 parser = argparse.ArgumentParser(description='Preprocessing des données')
 parser.add_argument('--frenchThreshold', type=float, default=0.8,
@@ -47,7 +48,7 @@ if __name__ == "__main__":
 
     while not reach_end and i < args.maxCommentProcessed:
         stats.total += 1
-        comment = os.system('head -{} {}'.format(i, args.decompressedSourceFilePath))
+        comment = subprocess.check_output('head -{} {}'.format(i, args.decompressedSourceFilePath), shell=True)
 
         if comment == "end":
             reach_end = True

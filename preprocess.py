@@ -54,6 +54,7 @@ if __name__ == "__main__":
             reach_end = True
         else:
             print(comment)
+            i += 1
             comment_loaded = json.loads(comment)
             body = comment_loaded["body"]
 
@@ -88,7 +89,7 @@ if __name__ == "__main__":
                              comment_loaded['parent_id'], comment_loaded['score'], "\""+comment_loaded['subreddit']+"\"",
                              comment_loaded['subreddit_id']])
             os.system("echo \"{}\" > ./reddit_source_fr_preprocessed.csv".format(data))
-            i += 1
+
             stats.ok += 1
 
         if stats.total % 10000 == 0:

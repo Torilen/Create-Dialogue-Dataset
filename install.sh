@@ -8,4 +8,4 @@ echo "/___/_//_/___/\__/\_,_/_/_/\_,_/\__/_/\___/_//_/ /_/ /____/____/ "
 sudo apt-get -y update
 sudo apt-get -y upgrade
 sudo apt-get -y install build-essential wget tar zstd python3-pip
-sudo pip install langdetect pandas json
+sudo python3.7 -m pip install langdetect pandas json

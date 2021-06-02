@@ -33,7 +33,7 @@ fi
 
 echo "Décompression du fichier en cours..."
 zstd -d ${reddit_file_path}
-echo "end" > reddit_source
+echo "end" >> reddit_source
 
 
 

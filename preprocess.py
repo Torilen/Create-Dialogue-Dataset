@@ -37,8 +37,8 @@ if __name__ == "__main__":
     stats = Stats()
     reach_end = False
     i = 1
-    os.system("touch ./reddit_source_fr_preprocessed.json")
-
+    pd.DataFrame([], columns=["author", "body", "controversiality", "created_utc", "distinguished", "id", "parent_id",
+                              "score", "subreddit", "subreddit_id"]).to_csv("./reddit_source_fr_preprocessed.csv")
     with open(args.listSubredditFilePath) as f:
         list_subreddit = f.readlines()
         list_subreddit = [e.replace("\n", "") for e in list_subreddit]
@@ -83,12 +83,16 @@ if __name__ == "__main__":
 
             # Le commentaire est valable
             comment_id = comment_loaded['id']
-            os.system("echo \"{}\" > reddit_source_fr_preprocessed.json".format(comment))
+            data = ','.join([i, comment_loaded['author'], "\""+comment_loaded['body']+"\"", comment_loaded['controversiality'],
+                             comment_loaded['created_utc'], comment_loaded['distinguished'], comment_loaded['id'],
+                             comment_loaded['parent_id'], comment_loaded['score'], "\""+comment_loaded['subreddit']+"\"",
+                             comment_loaded['subreddit_id']])
+            os.system("echo \"{}\" > ./reddit_source_fr_preprocessed.csv".format(data))
             i += 1
             stats.ok += 1
 
         if stats.total % 10000 == 0:
-            print("Processed: " + str(stats.total) + " STATS : " + json.dumps(stats.__dict__))
+            print("Processed: " + str(stats.total) + "\n STATS : " + json.dumps(stats.__dict__))
 
 
 

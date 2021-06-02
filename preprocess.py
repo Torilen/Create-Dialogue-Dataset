@@ -41,7 +41,7 @@ if __name__ == "__main__":
 
     with open(args.listSubredditFilePath) as f:
         list_subreddit = f.readlines()
-        list_subreddit = [e.replace("\\n", "") for e in list_subreddit]
+        list_subreddit = [e.replace("\n", "") for e in list_subreddit]
     f.close()
 
     print(list_subreddit)
@@ -53,6 +53,7 @@ if __name__ == "__main__":
         if comment == "end":
             reach_end = True
         else:
+            print(comment)
             comment_loaded = json.loads(comment)
             body = comment_loaded["body"]
 

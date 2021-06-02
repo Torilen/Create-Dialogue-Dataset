@@ -2,7 +2,7 @@
 
 import json
 import pandas as pd
-from langdetect import detect
+from langdetect import detect_langs
 import os
 import argparse
 
@@ -11,6 +11,81 @@ parser.add_argument('--frenchThreshold', type=float, default=0.8,
                     help='Lowest ratio of French to non-French text. Enter a value between 0 and 1.')
 parser.add_argument('--decompressedSourceFilePath', type=str, default="./",
                     help='Path to the source file downloaded and decompressed by download.sh')
+parser.add_argument('--listSubredditFilePath', type=str, default="./",
+                    help='Path to the file contains the list of accepted subreddit')
+parser.add_argument('--maxCommentProcessed', type=int, default=20000,
+                    help='Maximum number of comment processed')
 args = parser.parse_args()
 
-print(os.system('head -1 {}'.format(args.decompressedSourceFilePath)))
+class Stats:
+    """Filtering stats"""
+
+    def __init__(self):
+        """Initialize an Utterance"""
+        self.bots = 0
+        self.total = 0
+        self.removed = 0
+        self.deleted = 0
+        self.empties = 0
+        self.non_french = 0
+        self.low_french = 0
+        self.bad_subreddit = 0
+        self.ok = 0
+
+if __name__ == "__main__":
+    stats = Stats()
+    reach_end = False
+    i = 1
+    os.system("touch ./reddit_source_fr_preprocessed.json")
+
+    with open(args.listSubredditFilePath) as f:
+        list_subreddit = f.readlines()
+    f.close()
+
+    print(list_subreddit)
+
+    while not reach_end and i < args.maxCommentProcessed:
+        stats.total += 1
+        comment = os.system('head -{} {}'.format(i, args.decompressedSourceFilePath))
+
+        if comment == "end":
+            reach_end = True
+        else:
+            comment_loaded = json.loads(comment)
+            body = comment_loaded["body"]
+
+            is_bad_subreddit = comment_loaded["subreddit"] not in list_subreddit
+            if is_bad_subreddit: stats.bad_subreddit += 1; continue
+            is_a_bot = body.__contains__("I am a bot") or body.__contains__("I'm a bot")
+            if is_a_bot: stats.removed += 1; continue
+            is_deleted = body.__contains__("[deleted]")
+            if is_deleted: stats.deleted += 1; continue
+            is_removed = body.__contains__("[removed]")
+            if is_removed: stats.removed += 1; continue
+
+            is_empty = body.strip() == ""
+            if is_empty: stats.empties += 1; continue
+
+            try:
+                languages = detect_langs(body[0:50])
+            except:
+                stats.non_french += 1
+                continue
+
+            not_french = languages[0].lang != 'fr'
+            if not_french: stats.non_french += 1; continue
+
+            low_french = languages[0].prob < args.frenchThreshold
+            if low_french: stats.low_french += 1; continue
+
+            # Le commentaire est valable
+            comment_id = comment_loaded['id']
+            os.system("echo \"{}\" > reddit_source_fr_preprocessed.json".format(comment))
+            i += 1
+            stats.ok += 1
+
+        if stats.total % 10000 == 0:
+            print("Processed: " + str(stats.total) + " STATS : " + json.dumps(stats.__dict__))
+
+
+

@@ -33,7 +33,10 @@ fi
 
 echo "Décompression du fichier en cours..."
 zstd -d ${reddit_file_path}
+echo "Ajout du token de fin..."
 echo "end" >> reddit_source
+echo "Ajout des sauts de ligne..."
+sed -i -r 's/("total_awards_received":(.)*})/"total_awards_received":0}\n/g' reddit_source
 
 
 

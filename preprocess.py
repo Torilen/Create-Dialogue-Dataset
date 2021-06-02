@@ -89,7 +89,7 @@ if __name__ == "__main__":
                              comment_loaded['created_utc'], comment_loaded['distinguished'], comment_loaded['id'],
                              comment_loaded['parent_id'], comment_loaded['score'], "\""+comment_loaded['subreddit']+"\"",
                              comment_loaded['subreddit_id']])
-            os.system("echo \"{}\" > ./reddit_source_fr_preprocessed.csv".format(data))
+            os.system("echo \"{}\" >> ./reddit_source_fr_preprocessed.csv".format(data))
 
             stats.ok += 1
 

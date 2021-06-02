@@ -8,7 +8,8 @@ echo "                                               /___/                      
 
 sudo apt-get -y update
 sudo apt-get -y upgrade
-sudo apt-get -y install build-essential wget tar zstd
+sudo apt-get -y install build-essential wget tar zstd python3-pip
+sudo pip install langdetect pandas json
 
 echo "Avez-vous déjà le fichier source ? [y/n]"
 read cond

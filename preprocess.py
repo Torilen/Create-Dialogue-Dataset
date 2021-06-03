@@ -84,19 +84,16 @@ if __name__ == "__main__":
 
                 # Le commentaire est valable
                 comment_id = comment_loaded['id']
-                data = ','.join([str(i), str(comment_loaded['author']), "\""+comment_loaded['body']+"\"", str(comment_loaded['controversiality']),
+                data = ','.join([str(i), str(comment_loaded['author']), "\""+comment_loaded['body'].replace("`", "'")+"\"", str(comment_loaded['controversiality']),
                                  str(comment_loaded['created_utc']), str(comment_loaded['distinguished']), str(comment_loaded['id']),
                                  str(comment_loaded['parent_id']), str(comment_loaded['score']), "\""+comment_loaded['subreddit']+"\"",
                                  str(comment_loaded['subreddit_id'])])
-                os.system("echo \"{}\" >> ./reddit_source_fr_preprocessed.csv".format(data))
-
+                subprocess.check_output("echo `{}` >> ./reddit_source_fr_preprocessed.csv".format(data), shell=True)
                 stats.ok += 1
-
+                if stats.total % 10000 == 0:
+                    print("Processed: " + str(stats.total) + "\n STATS : " + json.dumps(stats.__dict__), flush=True)
         else:
             continue
-
-        if stats.total % 10000 == 0:
-            print("Processed: " + str(stats.total) + "\n STATS : " + json.dumps(stats.__dict__))
 
 
 

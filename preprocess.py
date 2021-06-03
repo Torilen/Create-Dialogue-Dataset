@@ -55,8 +55,6 @@ if __name__ == "__main__":
             if comment == "end\n":
                 reach_end = True
             else:
-                print("=================")
-                print(comment)
                 comment_loaded = json.loads(comment)
                 body = comment_loaded["body"]
 

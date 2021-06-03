@@ -46,7 +46,7 @@ if __name__ == "__main__":
 
     print(list_subreddit)
 
-    while not reach_end and i < args.maxCommentProcessed:
+    while not reach_end and stats.ok < args.maxCommentProcessed:
 
         comment = subprocess.check_output('sed "{}q;d" {}'.format(i, args.decompressedSourceFilePath), shell=True).decode("utf-8")
         if not comment == "\n":
@@ -54,7 +54,6 @@ if __name__ == "__main__":
             if comment == "end\n":
                 reach_end = True
             else:
-                i += 1
                 print("=================")
                 print(comment)
                 comment_loaded = json.loads(comment)
@@ -93,8 +92,11 @@ if __name__ == "__main__":
                 os.system("echo \"{}\" >> ./reddit_source_fr_preprocessed.csv".format(data))
 
                 stats.ok += 1
+
         else:
             continue
+
+        i += 1
 
         if stats.total % 10000 == 0:
             print("Processed: " + str(stats.total) + "\n STATS : " + json.dumps(stats.__dict__))

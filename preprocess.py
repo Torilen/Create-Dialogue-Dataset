@@ -91,7 +91,7 @@ if __name__ == "__main__":
                                  str(comment_loaded['subreddit_id'])])
                 #subprocess.check_output("echo `{}` >> ./reddit_source_fr_preprocessed.csv".format(data), shell=True)
                 with open("./reddit_source_fr_preprocessed.csv", 'a') as file:
-                    file.write(data)
+                    file.write(data+"\n")
                 file.close()
                 stats.ok += 1
                 if stats.total % 10000 == 0:

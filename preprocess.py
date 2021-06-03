@@ -84,7 +84,7 @@ if __name__ == "__main__":
 
                 # Le commentaire est valable
                 comment_id = comment_loaded['id']
-                data = ','.join([i, comment_loaded['author'], "\""+comment_loaded['body']+"\"", comment_loaded['controversiality'],
+                data = ','.join([str(i), comment_loaded['author'], "\""+comment_loaded['body']+"\"", comment_loaded['controversiality'],
                                  comment_loaded['created_utc'], comment_loaded['distinguished'], comment_loaded['id'],
                                  comment_loaded['parent_id'], comment_loaded['score'], "\""+comment_loaded['subreddit']+"\"",
                                  comment_loaded['subreddit_id']])

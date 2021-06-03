@@ -6,6 +6,7 @@ from langdetect import detect_langs
 import os
 import argparse
 import subprocess
+import time
 
 parser = argparse.ArgumentParser(description='Preprocessing des données')
 parser.add_argument('--frenchThreshold', type=float, default=0.8,
@@ -45,12 +46,11 @@ if __name__ == "__main__":
     f.close()
 
     print(list_subreddit)
-
+    start = time.time()
     while not reach_end and stats.ok < args.maxCommentProcessed:
 
         comment = subprocess.check_output('sed "{}q;d" {}'.format(i, args.decompressedSourceFilePath), shell=True).decode("utf-8")
         i += 1
-        print(stats.total)
         stats.total += 1
         if not comment == "\n":
             if comment == "end\n":
@@ -95,7 +95,10 @@ if __name__ == "__main__":
                 file.close()
                 stats.ok += 1
                 if stats.total % 10000 == 0:
-                    print("Processed: " + str(stats.total) + "\n STATS : " + json.dumps(stats.__dict__), flush=True)
+                    print("=====================")
+                    end = time.time()
+                    print("Processed: " + str(stats.total) + "\n STATS : " + json.dumps(stats.__dict__) + "TIME : " + str((end-start)/60) + "min", flush=True)
+                    start = time.time()
         else:
             stats.empties += 1
             continue

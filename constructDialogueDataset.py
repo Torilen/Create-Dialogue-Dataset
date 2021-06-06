@@ -23,6 +23,14 @@ if __name__ == "__main__":
     print(data.describe())
     print(data.head())
     for i, row in data.iterrows():
+        if not row['id'] in p:
+            parents = getAllParents(row['id'], data)[1:]
+            last_element = parents[len(parents)-1]
+            if last_element in list(k.keys()):
+                del k[last_element]
+                k[row['id']] = parents+[row['id']]
+            else:
+                k[row['id']] = parents + [row['id']]
         #if row['id'] in list(k.keys()):
-        print(row['id'])
-        print(getAllParents(row['id'], data)[1:])
+    print(len(k))
+    #print(getAllParents(row['id'], data)[1:])

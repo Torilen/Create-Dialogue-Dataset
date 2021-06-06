@@ -23,4 +23,4 @@ if __name__ == "__main__":
     print(data.head())
     for i, row in data.iterrows():
         #if row['id'] in list(k.keys()):
-        print(getAllParents(row['id'], data))
+        print(getAllParents(row['id'], data)[1:])

@@ -23,6 +23,8 @@ if __name__ == "__main__":
     print(data.describe())
     print(data.head())
     j = 0
+    ld = len(data)
+    n_diag = 0
     for i, row in data.iterrows():
         if not row['id'] in p:
             parents = getAllParents(row['id'], data)[1:]
@@ -33,9 +35,10 @@ if __name__ == "__main__":
                     k[row['id']] = parents+[row['id']]
                 else:
                     k[row['id']] = parents + [row['id']]
+                    n_diag += 1
 
-        if j % 10000 == 0:
-            print("{}/{}".format(j, len(data)))
+        if j % 100 == 0:
+            print("{}/{} {} conversations".format(j, ld, n_diag))
         j += 1
         #if row['id'] in list(k.keys()):
     print(len(k))

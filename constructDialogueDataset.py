@@ -23,6 +23,6 @@ if __name__ == "__main__":
     print(data.describe())
     print(data.head())
     for i, row in data.iterrows():
-        if row['id'] in list(k.keys()):
-            print(row['id'])
-            print(getAllParents(row['id'], data)[1:])
+        #if row['id'] in list(k.keys()):
+        print(row['id'])
+        print(getAllParents(row['id'], data)[1:])

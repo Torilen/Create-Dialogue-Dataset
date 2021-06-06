@@ -11,6 +11,6 @@ parser.add_argument('--extractedPreprocessCsvFilePath', type=str, default="./",
 args = parser.parse_args()
 
 if __name__ == "__main__":
-    data = pd.read_csv(args.extractedPreprocessCsvFilePath, sep=";")
+    data = pd.read_csv(args.extractedPreprocessCsvFilePath, sep=";", error_bad_lines=False)
     print(data.describe())
     print(data.head())

@@ -12,8 +12,8 @@ args = parser.parse_args()
 
 def getAllParents(id, data):
     parent = data[data['id'] == id]
-    print(parent)
-    print(parent['parent_id'].values)
+    print(parent['parent_id'])
+    print(parent['parent_id'].values[0])
 
 if __name__ == "__main__":
     data = pd.read_csv(args.extractedPreprocessCsvFilePath, sep=";", error_bad_lines=False)

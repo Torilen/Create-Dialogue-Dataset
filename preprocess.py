@@ -52,7 +52,7 @@ if __name__ == "__main__":
             if stats.ok < args.maxCommentProcessed:
                 i += 1
                 stats.total += 1
-                if stats.total % 10000 == 0:
+                if stats.total % 1000000 == 0:
                     print("=====================")
                     end = time.time()
                     print(

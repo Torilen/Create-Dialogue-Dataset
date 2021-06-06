@@ -13,8 +13,11 @@ args = parser.parse_args()
 def getAllParents(id, data):
     parent = data[data['id'] == id]['parent_id'].values
     if not len(parent) == 0:
-        p.add(parent[0][3:])
-        return getAllParents(parent[0][3:], data) + [parent[0][3:]]
+        if type(parent[0]) == str:
+            p.add(parent[0][3:])
+            return getAllParents(parent[0][3:], data) + [parent[0][3:]]
+        else:
+            return [id]
     else:
         return [id]
 
@@ -42,4 +45,6 @@ if __name__ == "__main__":
         j += 1
         #if row['id'] in list(k.keys()):
     print(len(k))
+    with open("conversations.json", "w") as outfile:
+        json.dump(k, outfile)
     #print(getAllParents(row['id'], data)[1:])

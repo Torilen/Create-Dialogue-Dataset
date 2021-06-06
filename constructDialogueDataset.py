@@ -11,9 +11,11 @@ parser.add_argument('--extractedPreprocessCsvFilePath', type=str, default="./",
 args = parser.parse_args()
 
 def getAllParents(id, data):
-    parent = data[data['id'] == id]
-    print(parent['parent_id'].values)
-    print(parent['parent_id'].values[0])
+    parent = data[data['id'] == id]['parent_id'].values
+    if not len(parent) == 0:
+        return getAllParents(parent[0][3:], data) + [parent[0][3:]]
+    else:
+        return [parent[0][3:]]
 
 if __name__ == "__main__":
     data = pd.read_csv(args.extractedPreprocessCsvFilePath, sep=";", error_bad_lines=False)
@@ -21,4 +23,4 @@ if __name__ == "__main__":
     print(data.head())
     for i, row in data.iterrows():
         #if row['id'] in list(k.keys()):
-        getAllParents(row['id'], data)
+        print(getAllParents(row['id'], data))

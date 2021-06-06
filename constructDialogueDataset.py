@@ -13,7 +13,7 @@ args = parser.parse_args()
 def getAllParents(id, data):
     parent = data[data['id'] == id]['parent_id'].values
     if not len(parent) == 0:
-        p.append(parent[0][3:])
+        p.add(parent[0][3:])
         return getAllParents(parent[0][3:], data) + [parent[0][3:]]
     else:
         return [id]

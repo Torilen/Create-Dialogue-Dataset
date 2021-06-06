@@ -97,6 +97,9 @@ if __name__ == "__main__":
                 else:
                     stats.empties += 1
                     continue
+                print("=====================")
+                print(stats.total)
+                print(i)
                 if stats.total % 10000 == 0:
                     print("=====================")
                     end = time.time()

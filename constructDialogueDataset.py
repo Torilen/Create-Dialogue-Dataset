@@ -26,15 +26,17 @@ if __name__ == "__main__":
     for i, row in data.iterrows():
         if not row['id'] in p:
             parents = getAllParents(row['id'], data)[1:]
-            last_element = parents[len(parents)-1]
-            if last_element in list(k.keys()):
-                del k[last_element]
-                k[row['id']] = parents+[row['id']]
-            else:
-                k[row['id']] = parents + [row['id']]
+            if len(parents) > 0:
+                last_element = parents[len(parents)-1]
+                if last_element in list(k.keys()):
+                    del k[last_element]
+                    k[row['id']] = parents+[row['id']]
+                else:
+                    k[row['id']] = parents + [row['id']]
 
         if j % 10000 == 0:
             print("{}/{}".format(j, len(data)))
+        j += 1
         #if row['id'] in list(k.keys()):
     print(len(k))
     #print(getAllParents(row['id'], data)[1:])

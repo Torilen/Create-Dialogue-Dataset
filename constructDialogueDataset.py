@@ -15,7 +15,7 @@ def getAllParents(id, data):
     if not len(parent) == 0:
         return getAllParents(parent[0][3:], data) + [parent[0][3:]]
     else:
-        return [parent[0][3:]]
+        return [id]
 
 if __name__ == "__main__":
     data = pd.read_csv(args.extractedPreprocessCsvFilePath, sep=";", error_bad_lines=False)

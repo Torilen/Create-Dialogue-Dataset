@@ -52,6 +52,13 @@ if __name__ == "__main__":
             if stats.ok < args.maxCommentProcessed:
                 i += 1
                 stats.total += 1
+                if stats.total % 10000 == 0:
+                    print("=====================")
+                    end = time.time()
+                    print(
+                        "Processed: " + str(stats.total) + "\n STATS : " + json.dumps(stats.__dict__) + "TIME : " + str(
+                            (end - start) / 60) + "min")
+                    start = time.time()
                 if not comment == "\n":
                     if comment == "end\n":
                         reach_end = True
@@ -97,16 +104,6 @@ if __name__ == "__main__":
                 else:
                     stats.empties += 1
                     continue
-                print("=====================")
-                print(stats.total)
-                print(i)
-                if stats.total % 10000 == 0:
-                    print("=====================")
-                    end = time.time()
-                    print(
-                        "Processed: " + str(stats.total) + "\n STATS : " + json.dumps(stats.__dict__) + "TIME : " + str(
-                            (end - start) / 60) + "min")
-                    start = time.time()
             else:
                 break
 

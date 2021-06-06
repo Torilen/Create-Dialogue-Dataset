@@ -17,6 +17,8 @@ parser.add_argument('--listSubredditFilePath', type=str, default="./",
                     help='Path to the file contains the list of accepted subreddit')
 parser.add_argument('--maxCommentProcessed', type=int, default=20000,
                     help='Maximum number of comment processed')
+parser.add_argument('--useSubredditFilter', type=bool, default=False,
+                    help='Use subreddit file ?')
 args = parser.parse_args()
 
 class Stats:
@@ -51,7 +53,7 @@ if __name__ == "__main__":
         for comment in source_file:
             if stats.ok < args.maxCommentProcessed:
                 i += 1
-                stats.total += 1
+
                 if stats.total % 1000000 == 0:
                     print("=====================")
                     end = time.time()
@@ -60,14 +62,16 @@ if __name__ == "__main__":
                             (end - start) / 60) + "min")
                     start = time.time()
                 if not comment == "\n":
+                    stats.total += 1
                     if comment == "end\n":
                         reach_end = True
                     else:
                         comment_loaded = json.loads(comment)
                         body = comment_loaded["body"]
 
-                        is_bad_subreddit = comment_loaded["subreddit"] not in list_subreddit
-                        if is_bad_subreddit: stats.bad_subreddit += 1; continue
+                        if args.useSubredditFilter:
+                            is_bad_subreddit = comment_loaded["subreddit"] not in list_subreddit
+                            if is_bad_subreddit: stats.bad_subreddit += 1; continue
                         is_a_bot = body.__contains__("I am a bot") or body.__contains__("I'm a bot")
                         if is_a_bot: stats.removed += 1; continue
                         is_deleted = body.__contains__("[deleted]")
@@ -76,8 +80,6 @@ if __name__ == "__main__":
                         if is_removed: stats.removed += 1; continue
 
                         is_empty = body.strip() == ""
-                        if is_empty:
-                            print(comment_loaded)
                         if is_empty: stats.empties += 1; continue
 
                         try:
@@ -104,7 +106,6 @@ if __name__ == "__main__":
                         file.close()
                         stats.ok += 1
                 else:
-                    stats.empties += 1
                     continue
             else:
                 break

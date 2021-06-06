@@ -22,6 +22,7 @@ if __name__ == "__main__":
     data = pd.read_csv(args.extractedPreprocessCsvFilePath, sep=";", error_bad_lines=False)
     print(data.describe())
     print(data.head())
+    j = 0
     for i, row in data.iterrows():
         if not row['id'] in p:
             parents = getAllParents(row['id'], data)[1:]
@@ -31,6 +32,9 @@ if __name__ == "__main__":
                 k[row['id']] = parents+[row['id']]
             else:
                 k[row['id']] = parents + [row['id']]
+
+        if j % 10000 == 0:
+            print("{}/{}".format(j, len(data)))
         #if row['id'] in list(k.keys()):
     print(len(k))
     #print(getAllParents(row['id'], data)[1:])

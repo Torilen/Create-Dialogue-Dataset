@@ -94,10 +94,12 @@ if __name__ == "__main__":
                             file.write(data+"\n")
                         file.close()
                         stats.ok += 1
+                        print("=====================")
+                        print(stats.total)
                         if stats.total % 10000 == 0:
                             print("=====================")
                             end = time.time()
-                            print("Processed: " + str(stats.total) + "\n STATS : " + json.dumps(stats.__dict__) + "TIME : " + str((end-start)/60) + "min", flush=True)
+                            print("Processed: " + str(stats.total) + "\n STATS : " + json.dumps(stats.__dict__) + "TIME : " + str((end-start)/60) + "min")
                             start = time.time()
                 else:
                     stats.empties += 1

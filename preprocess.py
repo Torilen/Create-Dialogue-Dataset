@@ -76,6 +76,8 @@ if __name__ == "__main__":
                         if is_removed: stats.removed += 1; continue
 
                         is_empty = body.strip() == ""
+                        if is_empty:
+                            print(comment_loaded)
                         if is_empty: stats.empties += 1; continue
 
                         try:

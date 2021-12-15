@@ -15,11 +15,11 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <!--<a href="https://github.com/Torilen/French-Dialogue-Dataset"> -->
+  <!--<a href="https://github.com/Torilen/Create-Dialogue-Dataset"> -->
   <!--  <img src="images/logo.png" alt="Logo" width="80" height="80"> -->
   <!--</a> -->
 
-  <h3 align="center">French Dialogue Dataset</h3>
+  <h3 align="center">Dialogue Dataset Creator</h3>
 
 
 </div>
@@ -79,10 +79,10 @@ project possible
 
 
 ## Datasets
-Dataset | # Dialogues | # Messages | # Words | Download | Updated Date
---- | --- | --- | --- | --- | ---
-French Reddit | 2 699 832 | 7 076 356 | 335 203 782  | [Link ?](#) | 10/12/2021
-DiaBLa | 144 | 5 748 | 50 998 | [Link](https://github.com/rbawden/DiaBLa-dataset/tree/master/DiaBLa-corpus/dialogues) | 15/12/2021
+Dataset | Language | # Dialogues | # Messages | # Words | Download | Updated Date
+--- | --- | --- | --- | --- | --- | ---
+French Reddit | fr | 2 699 832 | 7 076 356 | 335 203 782  | [Link ?](#) | 10/12/2021
+DiaBLa | fr | 144 | 5 748 | 50 998 | [Link](https://github.com/rbawden/DiaBLa-dataset/tree/master/DiaBLa-corpus/dialogues) | 15/12/2021
 ... | ... | ... | ...  | ... | ...
 
 <!-- GETTING STARTED -->
@@ -94,7 +94,7 @@ To start using the project, you need to install some system dependencies
 
 1. Clone the repo
    ```sh
-   git clone git@github.com:Torilen/French-Dialogue-Dataset.git
+   git clone git@github.com:Torilen/Create-Dialogue-Dataset.git
    ```
 2. Got into it
    ```sh
@@ -200,7 +200,7 @@ Distributed under License. See `LICENSE.md` for more information.
 
 [Ilyes Aniss Bentebib](https://ilyesbentebib.com) - aniss.bentebib@univ-grenoble-alpes.fr
 
-Project Link: [https://github.com/Torilen/French-Dialogue-Dataset](https://github.com/Torilen/French-Dialogue-Dataset)
+Project Link: [https://github.com/Torilen/Create-Dialogue-Dataset](https://github.com/Torilen/Create-Dialogue-Dataset)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

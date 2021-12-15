@@ -7,7 +7,7 @@
 
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
-[![MIT License][license-shield]][license-url]
+<img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/3.0/fr/88x31.png" />
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 
@@ -186,7 +186,7 @@ Example:
 
 <!-- LICENSE -->
 ## License
-
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/fr/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/3.0/fr/88x31.png" /></a><br />Ce(tte) œuvre est mise à disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/fr/">Licence Creative Commons Attribution - Pas d’Utilisation Commerciale 3.0 France</a>.
 Distributed under License. See `LICENSE.md` for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -229,5 +229,5 @@ Project Link: [https://github.com/Torilen/French-Dialogue-Dataset](https://githu
 [license-shield]: https://img.shields.io/github/license/Torilen/French-Dialogue-Dataset.svg?style=for-the-badge
 [license-url]: https://github.com/Torilen/French-Dialogue-Dataset/blob/master/LICENSE.md
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/Torilen
+[linkedin-url]: https://www.linkedin.com/in/aniss-bentebib-a449a8155/
 [product-screenshot]: images/screenshot.png

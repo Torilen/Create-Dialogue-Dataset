@@ -38,10 +38,6 @@
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
@@ -82,6 +78,12 @@ project possible
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
+## Datasets
+Dataset | # Dialogues | # Messages | # Words | Download | Updated Date
+--- | --- | --- | --- | --- | ---
+French Reddit | 2 699 832 | 7 076 356 | 335 203 782  | [Link ?](#) | 10/12/2021
+DiaBLa | 144 | 5 748 | 50 998 | [Link](https://github.com/rbawden/DiaBLa-dataset/tree/master/DiaBLa-corpus/dialogues) | 15/12/2021
+... | ... | ... | ...  | ... | ...
 
 <!-- GETTING STARTED -->
 ## Getting Started

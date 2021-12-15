@@ -209,8 +209,8 @@ Project Link: [https://github.com/Torilen/French-Dialogue-Dataset](https://githu
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* [LIG](https://choosealicense.com)
-* [MIAI Institue](https://www.webpagefx.com/tools/emoji-cheat-sheet)
+* [LIG](https://liglab.fr)
+* [MIAI Institue](https://miai.univ-grenoble-alpes.fr/)
 * [Jean-Pierre Chevallet](https://www.linkedin.com/in/jean-pierre-chevallet-8191255/)
 * [Didier Schwab](https://www.linkedin.com/in/didierschwab/?originalSubdomain=fr)
 
